@@ -1,3 +1,1 @@
-import time
-
-print(time.time())
+print((1, 2) + (2, 3))

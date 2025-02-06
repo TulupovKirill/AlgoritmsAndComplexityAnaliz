@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 
 def RecursionMethod(n : int, t: int):
     if n == 0:
-        t += 2
-        return 0
+        return 0, t + 2
     if n == 1:
-        t += 2
-        return 1
+        return 1, t + 2
     t += 1
-    return RecursionMethod(n - 1, t) + RecursionMethod(n - 2, t), t
+    a, t1 = RecursionMethod(n - 1, t)
+    b, t2 = RecursionMethod(n - 2, t)
+    return a + b, t1 + t2 + t
 
 
 def ReccurentMethod(n : int, t: int):
@@ -24,7 +24,7 @@ def ReccurentMethod(n : int, t: int):
 
 
 def main():
-    n = 200
+    n = 20
 
     recurrent_result_time = []
     recurrent_result_iteration = []
@@ -35,35 +35,39 @@ def main():
     for i in range(n):
         t = 0
         start_time = time.time()
-        code_to_test, time_result = ReccurentMethod(i, t)
+        code_to_test, iter_result = ReccurentMethod(i, t)
         stop_time = time.time()
         recurrent_result_time.append((stop_time - start_time) * 1000)
-        recurrent_result_iteration.append(time_result)
+        recurrent_result_iteration.append(iter_result)
 
         t = 0
         start_time = time.time()
-        code_to_test, time_result = ReccurentMethod(i, t)
+        code_to_test, iter_result = RecursionMethod(i, t)
         stop_time = time.time()
         recursion_result_time.append((stop_time - start_time) * 1000)
-        recursion_result_iteration.append(time_result)
+        recursion_result_iteration.append(iter_result)
 
     plt.clf()
 
     plt.title("Временный анализ")
+    plt.plot(range(n), recurrent_result_time, color="red")
+    plt.plot(range(n), recursion_result_time, color="black")
+    plt.xticks(range(n))
     plt.xlabel("Вычисление номера элемента Фиббоначчи")
     plt.ylabel("Время, мсек")
-    plt.plot(range(n), recurrent_result_time, color="red", label="Рекурсия")
-    plt.plot(range(n), recursion_result_time, color="black", label="Рекурретность")
-    plt.savefig("time.png")
+    plt.legend(["Рекурретность", "Рекурсия"])
+    plt.savefig("Lab1/time.png")
 
     plt.clf()
 
     plt.title("Анализ сложности")
+    plt.plot(range(n), recurrent_result_iteration, color="red")
+    plt.plot(range(n), recursion_result_iteration, color="black")
+    plt.xticks(range(n))
     plt.xlabel("Вычисление номера элемента Фиббоначчи")
     plt.ylabel("Количество операций")
-    plt.plot(range(n), recurrent_result_iteration, color="red", label="Рекурсия")
-    plt.plot(range(n), recursion_result_iteration, color="black", label="Рекурретность")
-    plt.savefig("iteration.png")
+    plt.legend(["Рекурретность", "Рекурсия"])
+    plt.savefig("Lab1/iteration.png")
 
 if __name__ == "__main__":
     main()
