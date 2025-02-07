@@ -69,5 +69,17 @@ def main():
     plt.legend(["Рекурретность", "Рекурсия"])
     plt.savefig("Lab1/iteration.png")
 
+
+def example(data: int):
+    t = 0
+    res1, _ = ReccurentMethod(data, t)
+    t = 0
+    res2, _ = RecursionMethod(data, t)
+
+    print(f'Recursion: {res1}\nReccurent: {res2}')
+
 if __name__ == "__main__":
-    main()
+    data = int(input())
+
+    example(data)
+
