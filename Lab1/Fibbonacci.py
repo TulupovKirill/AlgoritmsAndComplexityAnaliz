@@ -14,13 +14,13 @@ def RecursionMethod(n : int, t: int):
 
 def ReccurentMethod(n : int, t: int):
     t += 1
-    fibbonacci_num = [1, 1]
+    a, b = 1, 1
     t += 1
     for i in range(2, n):
         t += 2
-        fibbonacci_num.append(fibbonacci_num[i - 1] + fibbonacci_num[i - 2])
+        a, b = a + b, a
     t += 1
-    return fibbonacci_num[n - 1], t
+    return a, t
 
 
 def main():
