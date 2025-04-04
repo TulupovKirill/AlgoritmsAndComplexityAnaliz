@@ -1,3 +1,6 @@
+import time
+import matplotlib.pyplot as plt
+
 def next_permutation(sequence) -> bool:
 	count = len(sequence)
 	i = count
@@ -22,16 +25,24 @@ def next_permutation(sequence) -> bool:
 	return True
 
 
-def greater(value_0, value_1) -> bool:
-	return value_0 > value_1
+seq = list(reversed(range(1, 10)))
+permutation_found = True
+while permutation_found:
+	permutation_found = next_permutation(seq)
+	print(seq)
 
+"""
+    Функция generate_permutations(n): Эта функция инициализирует вектор инверсий и массив для хранения перестановок. 
+	Она запускает рекурсивную функцию backtrack.
 
-def main():
-    sequence = list(map(lambda x: int(x), input().split(' ')))
-    permutation_found = True
-    while permutation_found:
-        print(sequence)
-        permutation_found = next_permutation(sequence)
-		
-if __name__ == '__main__':
-    main()
+    Функция backtrack(current_permutation): Эта рекурсивная функция генерирует перестановки. 
+	Если длина текущей перестановки равна n, она добавляет её в список результатов. 
+	В противном случае, она перебирает все возможные элементы, которые могут быть добавлены.
+
+    Обновление вектора инверсий: При добавлении нового элемента мы обновляем вектор инверсий, проверяя, 
+	сколько элементов в текущей перестановке больше нового элемента.
+
+    Рекурсия и возврат: После добавления элемента вызывается рекурсивный вызов. 
+	После завершения мы удаляем последний элемент и восстанавливаем вектор инверсий.
+
+"""
