@@ -1,33 +1,41 @@
-def generate_permutations(n: int):
-    # Инициализация вектора инверсий
-    inversions = [0] * n
-    # Инициализация массива для хранения перестановок
-    permutations = []
-    
-    def backtrack(current_permutation: list):
-        if len(current_permutation) == n:
-            permutations.append(current_permutation[:])
-            return
-        
-        for i in range(n):
-            if i not in current_permutation:
-                current_permutation.append(i)
-                # Обновляем вектор инверсий
-                new_inversions = inversions[:]
-                for j in current_permutation[:-1]:
-                    if j > i:
-                        new_inversions[j] += 1
-                inversions[:] = new_inversions
-                backtrack(current_permutation)
-                current_permutation.pop()
-                # Восстанавливаем вектор инверсий
-                inversions[:] = [0] * n
+import numpy as np
 
-    backtrack([])
-    return permutations
+def add(vector:dict):
+    i = len(vector)
+    flag = True
+    while i > 0:
+        if flag and i > vector[i]:
+            vector[i] += 1
+            flag = False
+        if i == vector[i]:
+            vector[i] = 0
+            if i > 1:
+                vector[i - 1] += 1
+        i -= 1
+    flag = True
+    for i in vector.keys():
+        if vector[i] != 0:
+            flag = False
+            break
+    return flag
 
-# Пример использования
-n = 3
-perms = generate_permutations(n)
-for perm in perms:
-    print(perm)
+def gereration_with_vector(vector:dict):
+    L = list(range(len(vector)))
+    result = []
+    for i in range(len(vector), 0, -1):
+        index = vector[i] + 1
+        a = L[-index]
+        result.append(a)
+        L.remove(a)
+    result = list(reversed(result))
+    return result
+
+def permutation(vector):
+    return add(vector)
+
+
+vector = {i: 0 for i in range(1, 4)}
+flag = False
+while not flag:
+    flag = permutation(vector)
+    print(gereration_with_vector(vector))
