@@ -37,15 +37,9 @@ def Jonson_Trottet(sequence: list, disriptions):
         disriptions[i] *= -1
     return True
 
-    
 
-def main():
-    sequence = list(range(1, 10))
-    disriptions = [-1] * len(sequence)
-    flag = True
-    while flag:
-        flag = Jonson_Trottet(sequence, disriptions)
-        print(sequence)
-		
-if __name__ == '__main__':
-    main()
+sequence = list(range(1, 10))
+disriptions = [-1] * len(sequence)
+flag = True
+while flag:
+    flag = Jonson_Trottet(sequence, disriptions)
