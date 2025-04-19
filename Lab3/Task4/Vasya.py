@@ -8,7 +8,7 @@ def calculate_purchases(budget, price_list: dict, required_item: dict):
     for name, price in sorted_items:
         if budget >= price and name in required_item:  # Проверяем, позволяет ли бюджет
             purchased_items[name] = purchased_items.get(name, 0) + required_item[name]
-            budget -= price
+            budget -= price * required_item[name]
         else:
             break  # Бюджет исчерпан
 
@@ -33,7 +33,7 @@ def calculate_purchases(budget, price_list: dict, required_item: dict):
 
 
 def demo():
-    budget = 100
+    budget = 200
     required_item = {"Ручка": 2, "Тетрадь": 2, "Линейка": 2}
     price_list = {"Ручка": 10, "Тетрадь": 30, "Линейка": 5}
 
@@ -41,3 +41,5 @@ def demo():
 
     for items in purchased:
         print(items)
+
+demo()

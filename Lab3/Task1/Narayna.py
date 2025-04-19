@@ -25,8 +25,8 @@ def next_permutation(sequence) -> bool:
 	return True
 
 
-# seq = list(reversed(range(1, 10)))
-# permutation_found = True
-# while permutation_found:
-# 	permutation_found = next_permutation(seq)
-# 	print(seq)
+seq = list(reversed(range(1, 10)))
+permutation_found = True
+while permutation_found:
+	permutation_found = next_permutation(seq)
+	print(seq)

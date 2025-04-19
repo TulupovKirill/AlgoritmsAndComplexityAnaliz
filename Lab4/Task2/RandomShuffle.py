@@ -48,4 +48,4 @@ def t(n):
     plt.legend()
     plt.savefig("Lab4/Task2/time.png")
 
-t(1000)
+demo()
