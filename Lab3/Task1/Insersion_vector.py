@@ -33,9 +33,9 @@ def gereration_with_vector(vector:dict):
 def permutation(vector):
     return add(vector)
 
-
-vector = {i: 0 for i in range(1, 4)}
-flag = False
-while not flag:
-    flag = permutation(vector)
-    print(gereration_with_vector(vector))
+def demo():
+    vector = {i: 0 for i in range(1, 4)}
+    flag = False
+    while not flag:
+        flag = permutation(vector)
+        print(gereration_with_vector(vector))

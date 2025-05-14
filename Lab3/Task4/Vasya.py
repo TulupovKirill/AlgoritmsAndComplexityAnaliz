@@ -33,7 +33,7 @@ def calculate_purchases(budget, price_list: dict, required_item: dict):
 
 
 def demo():
-    budget = 200
+    budget = 130
     required_item = {"Ручка": 2, "Тетрадь": 2, "Линейка": 2}
     price_list = {"Ручка": 10, "Тетрадь": 30, "Линейка": 5}
 

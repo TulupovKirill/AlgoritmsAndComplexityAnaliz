@@ -30,10 +30,10 @@ def t(n):
         time2 = time.time()
         result.append(time2 - time1)
 
-    plt.title("Временной анализ перестановок с повторениями множества")
+    plt.title("Временной анализ всевозможных выборок из множества")
     plt.plot(range(3, n), result)
     plt.xlabel("Мощность множества")
     plt.ylabel("Время, мсек")
     plt.savefig("time.png")
 
-demo()
+t(10)

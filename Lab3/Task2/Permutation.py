@@ -40,5 +40,3 @@ def demo():
     unique_permutations = generate_permutations(elements)
     for perm in unique_permutations:
         print(perm)
-
-t(10)

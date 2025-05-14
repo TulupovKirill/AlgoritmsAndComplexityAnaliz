@@ -1,19 +1,15 @@
 def kmp_search(text, pattern):
     n = len(text)
     m = len(pattern)
-
     lps = [0] * m
-    j = 0  # индекс для pattern
+    j = 0 
     compute_lps(pattern, lps)
-
     positions = []
-    i = 0  # индекс для text
-
+    i = 0
     while i < n:
         if pattern[j] == text[i]:
             i += 1
             j += 1
-
         if j == m:
             positions.append(i - j)
             j = lps[j - 1]
@@ -22,14 +18,11 @@ def kmp_search(text, pattern):
                 j = lps[j - 1]
             else:
                 i += 1
-
     return positions
-
 def compute_lps(pattern, lps):
     length = 0
     i = 1
     lps[0] = 0
-
     while i < len(pattern):
         if pattern[i] == pattern[length]:
             length += 1
