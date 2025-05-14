@@ -34,6 +34,6 @@ def t(n):
     plt.plot(range(3, n), result)
     plt.xlabel("Мощность множества")
     plt.ylabel("Время, мсек")
-    plt.savefig("Lab3/Task3/time.png")
+    plt.savefig("time.png")
 
 demo()
